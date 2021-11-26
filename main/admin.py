@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Custemer, Obat, Order
+from .models import Custemer, Obat, Order, Profile
 
 # class CustemerAdmin(admin.ModelAdmin):
 #     model = Custemer
@@ -14,5 +14,6 @@ from .models import Custemer, Obat, Order
 admin.site.register(Custemer)
 admin.site.register(Obat)
 admin.site.register(Order)
+admin.site.register(Profile)
 
     

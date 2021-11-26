@@ -13,6 +13,9 @@ urlpatterns = [
     path('edit_pelanggan/<str:pk>/', views.updateCustemer, name='edit_pelanggan'),
     path('hapus_pelanggan/<str:pk>/', views.deletCustemer, name='hapus_pelanggan'),
     path('transaksi/', views.order, name='transaksi'),
+    path('tambah_transaksi/', views.addOrder, name='tambah_transaksi'),
+    path('user/', views.user, name="user"),
+    path('tambah_user/', views.addUser, name="tambah_user"),
     
 ]
 

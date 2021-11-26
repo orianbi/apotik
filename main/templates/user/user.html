@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Halaman Transaksi</h1>
+    <h1 class="h3 mb-0 text-gray-800">Halaman User</h1>
   </div>
   <!-- end Page Heading -->
   <!-- DataTales Example -->
@@ -12,10 +12,8 @@
       <div class="row">
         <div class="col-md-12">
           <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
-          <a
-            href="{% url 'tambah_transaksi' %}"
-            class="btn btn-primary mb-1 mt-3"
-            ><i class="fas fa-fw fa-cart-plus"></i> Transaksi</a
+          <a href="{% url 'tambah_user' %}" class="btn btn-primary mb-1 mt-3"
+            ><i class="fas fa-fw fa-plus-circle"></i> Tambah</a
           >
           <a href="#" class="btn btn-success mb-1 mt-3" style="float: right">
             <i class="fas fa-download fa-sm text-white-50"></i> Download
@@ -35,26 +33,18 @@
         >
           <thead class="thead-dark">
             <tr>
-              <th>NAMA OBAT</th>
-              <th>NAMA PELANGGAN</th>
-              <th>TANGGAL BELI</th>
-              <th>JUMLAH BELI</th>
-              <th>JUMLAH HARGA</th>
-              <th>DISKON</th>
-              <th>TOTAL HARGA</th>
+              <th>USERNAME</th>
+              <th>EMAIL</th>
+              <th>LEVEL USER</th>
               <th>AKSI</th>
             </tr>
           </thead>
           <tbody>
-            {% for or in order %}
+            {% for user in users %}
             <tr>
-              <td>{{or.obat_id.name_obat}}</td>
-              <td>{{or.custemer_id.name_custemer}}</td>
-              <td>{{or.date_created | date:"d N Y H:i a"}}</td>
-              <td>{{or.qty_order}}</td>
-              <td>Rp. {{or.qty_price | intcomma}}</td>
-              <td>{{or.discon}}%</td>
-              <td>Rp. {{or.price_after_disc | intcomma}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.profile.role}}</td>
 
               <!-- <td>{{as.masa_aktif|timeuntil}}</td> -->
               <!--<td>

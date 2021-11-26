@@ -1,10 +1,24 @@
+
 from django.db import models
+from django.db.models.base import Model
 from django.db.models.fields import IntegerField
-from django.db.models.fields.related import ForeignKey
+from django.db.models.fields.related import ForeignKey, OneToOneField
+from django.contrib.auth.models import User
 
 
 # Create your models here.
-
+class Profile(models.Model):
+    
+    ROLE_CHOICES = (
+        ('Admin','Admin'),       
+        ('User','User'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=50, choices=ROLE_CHOICES)
+    def __str__(self):
+        return self.user.username
+    
+    
 class Custemer(models.Model):
     kode_custemer = models.CharField(max_length=50, blank=True, null=True)
     name_custemer = models.CharField(max_length=50, blank=True, null=True)
@@ -37,5 +51,4 @@ class Order(models.Model):
     def __str__(self):
         return self.obat_id.name_obat
     
-    
-    
+   

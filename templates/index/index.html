@@ -97,7 +97,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{% url 'user' %}">
             <i class="fas fa-fw fa-hospital-user"></i>
             <span>User</span></a
           >
@@ -359,9 +359,15 @@
         $("#id_date_created").datetimepicker({
           format: "Y-m-d H:i",
         });
-        $("#id_pajak").datepicker({
-          format: "Y-m-d",
-        });
+      });
+
+      $("#perhitungan").keyup(function () {
+        var price = parseInt($("#price_obat").val());
+        var qtyOrder = parseInt($("#qty_order").val());
+
+        var qtyPrice = price * qtyOrder;
+
+        $("#qty_price").attr("value", qtyPrice);
       });
     </script>
   </body>

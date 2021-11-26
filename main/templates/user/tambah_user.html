@@ -1,0 +1,126 @@
+{% extends 'index/index.html' %} {% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Halaman Tambah User</h1>
+    <a
+      href="{% url 'user' %}"
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      ><i class="fas fa-fw fa-long-arrow-alt-left"></i
+    ></a>
+  </div>
+  <!-- Circle Buttons -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">TAMBAH USER</h6>
+    </div>
+     <article class="card-body">
+     <div class="col-md-6">
+          {% load widget_tweaks %}
+          <form
+            method="post"
+            class="
+              needs-validation
+              {%
+              if
+              form.errors
+              %}was-validated{%
+              endif
+              %}
+            "
+            novalidate
+          >
+            {% csrf_token %}
+             <div class="form-group">
+		<label>{{ form.username.label }}</label>
+		{% if form.is_bound %}
+            {% if form.username.errors %}
+                {% render_field form.username class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.username class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.username class="form-control" %}
+        {% endif %}
+        {% for error in form.username.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->
+  <div class="form-group">
+		<label>{{ form.email.label }}</label>
+		{% if form.is_bound %}
+            {% if form.email.errors %}
+                {% render_field form.email class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.email class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.email class="form-control" %}
+        {% endif %}
+        {% for error in form.email.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->
+  <div class="form-group">
+		<label>{{ form.password1.label }}</label>
+	    {% if form.is_bound %}
+            {% if form.password1.errors %}
+                {% render_field form.password1 class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.password1 class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.password1 class="form-control" %}
+        {% endif %}
+        {% for error in form.password1.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+    </div> <!-- form-group end.// -->  
+    <div class="form-group">
+		<label>{{ form.password2.label }}</label>
+	    {% if form.is_bound %}
+            {% if form.password2.errors %}
+                {% render_field form.password2 class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.password2 class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.password2 class="form-control" %}
+        {% endif %}
+        {% for error in form.password2.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->  
+  <div class="form-group">
+		<label>{{ role.role.label }}</label>
+	    {% if role.is_bound %}
+            {% if role.role.errors %}
+                {% render_field role.role class="form-control is-invalid" %}
+            {% else %}
+                {% render_field role.role class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field role.role class="form-control" %}
+        {% endif %}
+        {% for error in role.role.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->  
+    <div class="form-group">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                Tambah
+              </button>
+            </div>
+            <!-- form-group// -->
+          </form>
+          </div>
+        </article>
+        <!-- card-body end .// -->
+  </div>
+</div>
+<!-- end begin page content-->
+
+{% endblock %}
