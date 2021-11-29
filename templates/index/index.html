@@ -87,21 +87,25 @@
         <hr class="sidebar-divider" />
 
         <!-- Heading -->
-        <div class="sidebar-heading">Administrator</div>
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}" class="selected">
+          <a class="nav-link" class="selected" href="{% url 'home' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
         </li>
+        {% if request.user.profile.role == 'Admin' %}
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+        <div class="sidebar-heading">Administrator</div>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'user' %}">
             <i class="fas fa-fw fa-hospital-user"></i>
             <span>User</span></a
           >
         </li>
+        {% endif %}
         <!-- Divider -->
         <hr class="sidebar-divider" />
 
@@ -134,7 +138,7 @@
         <hr class="sidebar-divider" />
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{% url 'logout' %}">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Keluar</span></a
           >
@@ -217,7 +221,10 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    <strong>ORI</strong>
+                    {% if user.is_authenticated %}
+                    <strong>{{user}}</strong>
+
+                    {% endif %}
                   </span>
 
                   <img
@@ -244,7 +251,7 @@
                   </a>
                   <a
                     class="dropdown-item"
-                    href="#"
+                    href="{% url 'logout' %}"
                     data-toggle="modal"
                     data-target="#logoutModal"
                   >
@@ -318,7 +325,7 @@
             >
               Batal
             </button>
-            <a class="btn btn-primary" href="#">Keluar</a>
+            <a class="btn btn-primary" href="{% url 'logout' %}">Keluar</a>
           </div>
         </div>
       </div>

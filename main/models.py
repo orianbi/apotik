@@ -1,8 +1,4 @@
-
 from django.db import models
-from django.db.models.base import Model
-from django.db.models.fields import IntegerField
-from django.db.models.fields.related import ForeignKey, OneToOneField
 from django.contrib.auth.models import User
 
 
